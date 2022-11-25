@@ -19,7 +19,7 @@ export function Body() {
             <Content>
                 <Card>
                     <div style={{borderRadius: '1rem', overflow: 'hidden', width: '10rem', height: '10rem', margin: '0 auto' }}>
-                        <Image height={200} src={ImgCard1} alt={"Pessoas dançando em uma festa"} objectFit="cover" />
+                        <Image height={100} src={ImgCard1} alt={"Pessoas dançando em uma festa"} objectFit="cover" />
                     </div>
                     <h1>Relembre seus amigos</h1>
                     <br />
@@ -27,7 +27,7 @@ export function Body() {
                 </Card>
                 <Card>
                     <div style={{borderRadius: '1rem', overflow: 'hidden', width: '10rem', height: '10rem', margin: '0 auto' }}>
-                        <Image height={200} src={ImgCard2} alt={"Imagem de um velório"} objectFit="cover" />
+                        <Image height={100} src={ImgCard2} alt={"Imagem de um velório"} objectFit="cover" />
                     </div>
                     <h1>Agende velórios</h1>
                     <br />
@@ -35,7 +35,7 @@ export function Body() {
                 </Card>
                 <Card>
                     <div style={{borderRadius: '1rem', overflow: 'hidden', width: '10rem', height: '10rem', margin: '0 auto' }}>
-                        <Image height={200} src={ImgCard3} alt={"Celular escaneando um QR-Code"} objectFit="cover" />
+                        <Image height={100} src={ImgCard3} alt={"Celular escaneando um QR-Code"} objectFit="cover" />
                     </div>
                     <h1>QR Code</h1>
                     <br />
