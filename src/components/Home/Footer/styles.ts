@@ -13,6 +13,16 @@ export const FooterPlanos = styled.div`
     display: flex;
     flex-direction: row;
 
+    @media (max-width: 600px) {
+        padding: 0.5rem 0;
+        height: 7rem;
+        align-items: center;
+        text-align: center;
+        justify-content: space-around;
+        display: block;
+        flex-direction: row;
+    }
+
     div {
         display: flex;
         flex-direction: row;
@@ -26,5 +36,7 @@ export const FooterPlanos = styled.div`
         color: #fff;
         padding-left: 1rem;
     }
+
+    
     
 `;

@@ -6,6 +6,10 @@ export const Container = styled.section`
     width: 50%;
     margin: 0 auto;
     padding-top: 1rem;
+
+    @media (max-width: 600px) {
+        width: 100%;
+    }
 `;
 
 export const CarouselStyle = styled.div`
@@ -56,6 +60,38 @@ export const CarouselStyle = styled.div`
         }
         .carousel .control-dots {
             margin: -1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .carousel .control-next.control-arrow:before {
+                content: '';
+                border: solid var(--black);
+                border-width: 0;
+                display: inline-block;
+                padding: 0;
+                transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+            
+            .carousel .control-prev.control-arrow:before {
+                content: '';
+                border: solid var(--black);
+                border-width: 0;
+                display: inline-block;
+                padding: 0;
+                transform: rotate(0deg);
+                -webkit-transform: rotate(0deg);
+            }
+
+            .carousel .control-next.control-arrow, .carousel .control-next.control-arrow:hover{
+                background-color: rgba(0,0,0,0.5);;
+                right: -1rem;
+            }
+            
+            .carousel .control-prev.control-arrow, .carousel .control-prev.control-arrow:hover {
+                background-color: rgba(0,0,0,0.5);
+                left: -1rem;
+            }
         }
         
 `; 
