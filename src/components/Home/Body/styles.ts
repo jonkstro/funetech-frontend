@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-    h1 {
+    h1, h3 {
         color: var(--text-title);
         font-weight: 400;
         text-align: center;
