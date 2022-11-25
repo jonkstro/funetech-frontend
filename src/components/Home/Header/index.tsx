@@ -6,7 +6,7 @@ export function Header() {
         <Container>
             <Content>
                 <Link legacyBehavior href='/'>
-                    <img src='/favicon.png' alt='Logo meu Board' />
+                    <img src='/favicon.png' alt='Logo Funetech' />
                 </Link>
                 <nav>
                     <Link legacyBehavior href='/'>

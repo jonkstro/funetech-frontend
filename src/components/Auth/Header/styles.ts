@@ -19,4 +19,9 @@ export const Content = styled.div`
         padding: 0 0.5rem;
         text-align: center;
     }
+
+    img {
+        cursor: pointer;
+        max-width: 60px;
+    }
 `;
