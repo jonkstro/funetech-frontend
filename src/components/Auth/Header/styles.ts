@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.header`
     padding: 1rem;
+    background-color: rgba(255,255,255, 0.8);
 `;
 export const Content = styled.div`
     display: flex;

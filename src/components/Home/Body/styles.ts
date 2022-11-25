@@ -9,6 +9,7 @@ export const Container = styled.section`
     padding: 1rem;
     align-items: center;
     justify-content: center;
+    background-color: rgba(255,255,255, 0.8);
     
 `;
 

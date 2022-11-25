@@ -33,10 +33,16 @@ export const GlobalStyle = createGlobalStyle`
         @media (max-width: 720px) {
             font-size: 87.5%; //14px
         }
+
+        /* Adicionar imagem de fundo */
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
     }
 
     body {
-        background: var(--background); // Usar variáveis do css
+        /* background: var(--background); // Usar variáveis do css */
         -webkit-font-smoothing: antialiased;
     }
 

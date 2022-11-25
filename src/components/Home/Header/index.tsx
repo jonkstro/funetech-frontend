@@ -20,10 +20,10 @@ export function Header() {
                     </Link>
                 </nav>
                 <div>
-                    <Link legacyBehavior href='/signin'>
+                    <Link legacyBehavior href='/auth'>
                         <button>Entrar</button>
                     </Link>
-                    <Link legacyBehavior href='/signup'>
+                    <Link legacyBehavior href='/auth'>
                         <button>Criar Conta</button>
                     </Link>
                 </div>

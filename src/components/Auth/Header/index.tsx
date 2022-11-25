@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container, Content } from "./styles";
 
-import ImgLogo from "../../assets/images/logo.png";
+import ImgLogo from "../../../assets/images/logo.png";
 
 export function Header() {
     return (

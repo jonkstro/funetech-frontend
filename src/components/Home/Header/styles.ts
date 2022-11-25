@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.header`
     height: 6rem;
-    background-color: rgba(255, 255, 255, 0);
+    background-color: rgba(255,255,255, 0.8)
 
 `;
 
