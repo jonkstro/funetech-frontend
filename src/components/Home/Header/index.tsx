@@ -20,8 +20,12 @@ export function Header() {
                     </Link>
                 </nav>
                 <div>
-                    <button>Entrar</button>
-                    <button>Criar Conta</button>
+                    <Link legacyBehavior href='/signin'>
+                        <button>Entrar</button>
+                    </Link>
+                    <Link legacyBehavior href='/signup'>
+                        <button>Criar Conta</button>
+                    </Link>
                 </div>
             </Content>
         </Container>
