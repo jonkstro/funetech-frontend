@@ -119,7 +119,8 @@ export function useAuth() {
                 console.log('Cadastrado usuário '+ email);
                 limparForm();
             }).catch((error) =>{
-                console.log(error.response?.data.message);
+                console.log('Deu erro :'+error.response?.data?.message);
+                notifyErrors('Erro interno no sistema: Tente usar outro email');
             })
         } else {
             notifyErrors("Preencha os dados corretamente!!!");
