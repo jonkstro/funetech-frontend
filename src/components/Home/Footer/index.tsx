@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FooterPlanos } from "./styles";
+import { Content, FooterPlanos } from "./styles";
 
 import ImgCheck from "../../../assets/images/check.png";
 import Image from "next/image";
@@ -7,31 +7,34 @@ import Image from "next/image";
 export function Footer() {
     return (
         <FooterPlanos>
-            <Link style={{ textDecoration: 'none' }} href={""}>
+            <Content>
+                <Link style={{ textDecoration: 'none' }} href={""}>
+                    <div>
+                        <h3>
+                            Conheça nossos planos!!
+                        </h3>
+                    </div>
+                </Link>
                 <div>
+                    <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
                     <h3>
-                        Conheça nossos planos!!
+                        Planos Customizáveis
                     </h3>
                 </div>
-            </Link>
-            <div>
-                <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
-                <h3>
-                    Planos Customizáveis
-                </h3>
-            </div>
-            <div>
-                <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
-                <h3>
-                    Seus dados seguros
-                </h3>
-            </div>
-            <div>
-                <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
-                <h3>
-                    Sem propragandas
-                </h3>
-            </div>
+                <div>
+                    <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
+                    <h3>
+                        Seus dados seguros
+                    </h3>
+                </div>
+                <div>
+                    <Image width={20} src={ImgCheck} alt={"imagem de icone de checkbox"} />
+                    <h3>
+                        Sem propragandas
+                    </h3>
+                </div>
+
+            </Content>
         </FooterPlanos>
     );
 }

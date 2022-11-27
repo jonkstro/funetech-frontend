@@ -21,11 +21,11 @@ export function Header() {
                 </nav>
                 <div>
                     <Link legacyBehavior href='/auth'>
-                        <button>Entrar</button>
+                        <button>Entrar / Criar Conta</button>
                     </Link>
-                    <Link legacyBehavior href='/auth'>
+                    {/* <Link legacyBehavior href='/auth'>
                         <button>Criar Conta</button>
-                    </Link>
+                    </Link> */}
                 </div>
             </Content>
         </Container>

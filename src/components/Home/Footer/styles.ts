@@ -12,7 +12,8 @@ export const FooterPlanos = styled.div`
     justify-content: space-around;
     display: flex;
     flex-direction: row;
-
+    
+    
     @media (max-width: 600px) {
         padding: 0.5rem 0;
         height: 7rem;
@@ -22,8 +23,9 @@ export const FooterPlanos = styled.div`
         display: block;
         flex-direction: row;
     }
-
+    
     div {
+        
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -39,4 +41,9 @@ export const FooterPlanos = styled.div`
 
     
     
+`;
+
+export const Content = styled.div`
+    max-width: 1060px;
+    margin: 0 auto;
 `;

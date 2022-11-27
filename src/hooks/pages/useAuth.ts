@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { User } from "../../@types/user";
 
 export function useAuth() {
 
     // QUANDO CARREGAR A PÁGINA, IRÁ RODAR O USEEFFECT
     useEffect(()=> {
-        setNome('');
+        setName('');
         setEmail('');
         setPassword('');
         setConfPassword('');
     }, [])
 
     // CRIANDO AS VARIÁVEIS DE ESTADO
-    const [nome, setNome] = useState('');
+    const [first_name, setName] = useState('');
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
@@ -23,14 +28,30 @@ export function useAuth() {
     const [specialValidated, setSpecialValidated] = useState(false);
     const [lengthValidated, setLengthValidated] = useState(false);
 
-    function validarDados() {
-        if (nome.length > 0 && email.length > 12 && password.length > 8){
-            if (password === confPassword){
-
+    // REALIZAR A VALIDAÇÃO DOS DADOS ANTES DE CADASTRAR
+    function validarDadosCadastro() {
+        if (first_name.length > 0 && email.length > 12){
+            if (password !== confPassword){
+                notifyErrors('As senhas não estão iguais!!');
+                return false;
             }
+            else if (
+                lowerValidated == true &&
+                upperValidated == true &&
+                numberValidated == true &&
+                specialValidated == true &&
+                lengthValidated == true
+            ){
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
         }
     }
 
+    // FUNÇÃO QUE IRÁ REALIZAR A VALIDAÇÃO DA SENHA
     function handleValidation(password: string) {
         // REGEX
         const lower = new RegExp('(?=.*[a-z])');
@@ -69,8 +90,40 @@ export function useAuth() {
         } else {
             setLengthValidated(false);
         }
+    }
 
+    // FUNÇÃO QUE IRÁ LIMPAR O FORMULÁRIO 
+    function limparForm() {
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfPassword('');
+    }
 
+    // EXIBIR MENSAGEM DO TOASTIFY
+    function notifySucces(value: string) {
+        toast.success(value, {position: toast.POSITION.TOP_RIGHT})
+    }
+
+    function notifyErrors(value: string) {
+        toast.error(value, {position: toast.POSITION.TOP_RIGHT})
+    }
+
+    // FUNÇÃO QUE REALIZARÁ O POST COM O CADASTRO DO USUÁRIO
+    async function cadastrarUser(userInput : User){
+        if (validarDadosCadastro()) {
+            const response = await api.post('/users/', {
+                ...userInput
+            }).then(()=>{
+                notifySucces('Cadastrado com sucesso!!');
+                console.log('Cadastrado usuário '+ email);
+                limparForm();
+            }).catch((error) =>{
+                console.log(error.response?.data.message);
+            })
+        } else {
+            notifyErrors("Preencha os dados corretamente!!!");
+        }
     }
 
 
@@ -88,9 +141,13 @@ export function useAuth() {
 
 
 
+
+
     return {
-        nome,
-        setNome,
+        username,
+        setUsername,
+        first_name,
+        setName,
         email,
         setEmail,
         password,
@@ -102,6 +159,8 @@ export function useAuth() {
         numberValidated,
         specialValidated,
         lengthValidated,
-        handleValidation
+        handleValidation,
+        limparForm,
+        cadastrarUser,
     }
 }

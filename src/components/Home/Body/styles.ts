@@ -11,15 +11,17 @@ export const Container = styled.section`
     justify-content: center;
     background-color: rgba(255,255,255, 0.8);
     
-`;
+    `;
 
 export const Content = styled.div`
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    max-width: 1060px;
     gap: 2rem;
+    margin: 0 auto;
 
-    @media (max-width: 600px) {
+    @media (max-width: 800px) {
         grid-template-columns: repeat(1, 1fr);
         /* gap: 2rem; */
     }

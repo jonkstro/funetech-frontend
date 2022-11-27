@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { AuthForm, AuthFormContainer, AuthFormContent, SubmitButton } from "./styles";
 import { Grid, IconButton } from '@mui/material';
 import TextField from '@mui/material/TextField';
@@ -12,8 +12,10 @@ export function FormAuth() {
 
   // RECEBENDO AS VARIÁVEIS DO USEAUTH
   const {
-    nome,
-    setNome,
+    username,
+    setUsername,
+    first_name,
+    setName,
     email,
     setEmail,
     password,
@@ -26,27 +28,30 @@ export function FormAuth() {
     specialValidated,
     lengthValidated,
     handleValidation,
+    limparForm,
+    cadastrarUser,
   } = useAuth();
 
   // criando as variáveis de estado
-  const [authMode, setAuthMode] = useState("signin");
+  const [authMode, setAuthMode] = useState('signin');
   const [type, setType] = useState('password');
   
   function changeAuthMode() {
     setAuthMode(authMode === "signin" ? "signup" : "signin")
   }
 
-  function limparForm() {
-    setNome('');
-    setEmail('');
-    setPassword('');
-    setConfPassword('');
-  }
-
   function handleChangeType() {
     setType(type === 'password' ? 'text' : 'password')
   }
 
+  async function handleCreateUser(){
+    await cadastrarUser({
+      username,
+      first_name,
+      email,
+      password
+    })
+  }
 
   if (authMode === "signin") {
     return (
@@ -67,16 +72,18 @@ export function FormAuth() {
                 <Grid item xs={12}>      
                     <TextField
                         margin="dense"
-                        name="email"
-                        id="email"
+                        name="username"
+                        id="username"
                         label="Email"
                         type="email"
                         fullWidth
                         variant="standard"
                         placeholder='Email do Usuário: '
                         // passando valores para o input
-                        value={email}
-                        onChange={event => setEmail(event.target.value)}
+                        value={username}
+                        // iremos passar o email no username, pro django salvar
+                        // como email pelo frontend
+                        onChange={event => setUsername(event.target.value)}
                         />
                 </Grid>
                 <div>
@@ -118,7 +125,10 @@ export function FormAuth() {
 
   return (
     <AuthFormContainer>
-      <AuthForm action="" method="POST">
+      <AuthForm onSubmit={(e)=> {
+        e.preventDefault();
+        handleCreateUser();
+        }}>
       <AuthFormContent>
           <h3 className="Auth-form-title">Cadastrar</h3>
           <div className="text-center">
@@ -142,8 +152,8 @@ export function FormAuth() {
                         variant="standard"
                         placeholder='Nome do Usuário: '
                         // passando valores para o input
-                        value={nome}
-                        onChange={event => setNome(event.target.value)}
+                        value={first_name}
+                        onChange={event => setName(event.target.value)}
                         />
                 </Grid>
                 {/* <Grid item xs={12}> 
@@ -170,7 +180,12 @@ export function FormAuth() {
                         placeholder='Email do Usuário: '
                         // passando valores para o input
                         value={email}
-                        onChange={event => setEmail(event.target.value)}
+                        onChange={event => {
+                          setEmail(event.target.value);
+                          // iremos usar o front end pra cadastrar o username 
+                          // com email, pra autenticação com django por email
+                          setUsername(event.target.value);
+                        }}
                         />
                 </Grid>
                 <div>
@@ -208,24 +223,37 @@ export function FormAuth() {
                 <p className={specialValidated? 'validationMessageOk': 'validationMessageError'}>Sua senha deve conter ao menos um caractere especial</p>
                 
                 
+                <div>
+                  <Grid item xs={12}> 
+                      <TextField
+                          margin="dense"
+                          name="confirm_password"
+                          id="confirm_password"
+                          label="Senha"
+                          type={type}
+                          fullWidth
+                          variant="standard"
+                          placeholder='Repita a senha do Usuário: '
+                          // passando valores para o input
+                          value={confPassword}
+                          onChange={event => {
+                            setConfPassword(event.target.value);
+                            // console.log(event.target.value);
+                          }}
+                          />
+                  </Grid>
+                  {type === 'password'? 
+                  <VisibilityIcon onClick={()=> {
+                    handleChangeType();
+                  }} />
+                  :<VisibilityOffIcon onClick={()=> {
+                    handleChangeType();
+                  }} />}
+                </div>
+    
                 
-                <Grid item xs={12}> 
-                    <TextField
-                        margin="dense"
-                        name="confirm_password"
-                        id="confirm_password"
-                        label="Conrirmar Senha"
-                        type="password"
-                        fullWidth
-                        variant="standard"
-                        placeholder='Repita a senha do Usuário: '
-                        // passando valores para o input
-                        value={confPassword}
-                        onChange={event => setConfPassword(event.target.value)}
-                    />
-                </Grid>
                 <Grid item xs={12}>    
-                  <SubmitButton >
+                  <SubmitButton type="submit">
                     Cadastrar
                   </SubmitButton>
                 </Grid>

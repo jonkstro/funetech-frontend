@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.header`
     height: 6rem;
-    background-color: rgba(255,255,255, 0.8)
-
+    background-color: rgba(255,255,255, 0.8);
+    padding: 1rem;
 `;
 
 export const Content = styled.div`

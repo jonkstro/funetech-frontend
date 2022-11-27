@@ -4,10 +4,11 @@ export const Container = styled.section`
     align-items: center;
     justify-content: center;
     width: 50%;
+    height: 50%;
     margin: 0 auto;
     padding-top: 1rem;
-
-    @media (max-width: 600px) {
+    
+    @media (max-width: 800px) {
         width: 100%;
     }
 `;
