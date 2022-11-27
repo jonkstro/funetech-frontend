@@ -17,8 +17,8 @@ export const Content = styled.div`
     padding: 2rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    max-width: 1060px;
     gap: 2rem;
+    max-width: 1060px;
     margin: 0 auto;
 
     @media (max-width: 800px) {

@@ -24,6 +24,14 @@ export const FooterPlanos = styled.div`
         flex-direction: row;
     }
     
+    
+    
+    `;
+
+export const Content = styled.div`
+    max-width: 1060px;
+    margin: 0 auto;
+
     div {
         
         display: flex;
@@ -38,12 +46,6 @@ export const FooterPlanos = styled.div`
         color: #fff;
         padding-left: 1rem;
     }
-
     
     
-`;
-
-export const Content = styled.div`
-    max-width: 1060px;
-    margin: 0 auto;
 `;
