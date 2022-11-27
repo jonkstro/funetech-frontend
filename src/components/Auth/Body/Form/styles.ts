@@ -41,6 +41,35 @@ export const AuthFormContent = styled.div`
     input {
         font-size: 1rem;
     }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        
+        svg {
+            transition: all 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(0.9);
+                transform: scale(1.1);
+            }
+        }
+    }
+
+    
+    .validationMessageOk {
+        font-size: 0.8rem;
+        color: var(--green);
+    }
+    
+    .validationMessageError {
+        font-size: 0.8rem;
+        color: var(--red);
+    }
+
 `;
 
 export const AuthFormTitle = styled.div`
