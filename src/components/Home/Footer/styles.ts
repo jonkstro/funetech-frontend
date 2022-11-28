@@ -7,12 +7,22 @@ export const FooterPlanos = styled.div`
     right: 0;
     background-color: var(--green);
     height: 4rem;
+    @media (max-width: 600px) {
+        height: 7rem;
+    }
+    
+    
+    `;
+
+export const Content = styled.div`
     align-items: center;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding-top: 1rem;
     text-align: center;
     justify-content: space-around;
     display: flex;
     flex-direction: row;
-    
     
     @media (max-width: 600px) {
         padding: 0.5rem 0;
@@ -24,14 +34,6 @@ export const FooterPlanos = styled.div`
         flex-direction: row;
     }
     
-    
-    
-    `;
-
-export const Content = styled.div`
-    max-width: 1060px;
-    margin: 0 auto;
-
     div {
         
         display: flex;
