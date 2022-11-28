@@ -12,8 +12,8 @@ export function FormAuth() {
 
   // RECEBENDO AS VARIÁVEIS DO USEAUTH
   const {
-    username,
-    setUsername,
+    // username,
+    // setUsername,
     first_name,
     setName,
     email,
@@ -46,7 +46,7 @@ export function FormAuth() {
 
   async function handleCreateUser(){
     await cadastrarUser({
-      username,
+      // username,
       first_name,
       email,
       password
@@ -72,18 +72,16 @@ export function FormAuth() {
                 <Grid item xs={12}>      
                     <TextField
                         margin="dense"
-                        name="username"
-                        id="username"
+                        name="email"
+                        id="email"
                         label="Email"
                         type="email"
                         fullWidth
                         variant="standard"
                         placeholder='Email do Usuário: '
                         // passando valores para o input
-                        value={username}
-                        // iremos passar o email no username, pro django salvar
-                        // como email pelo frontend
-                        onChange={event => setUsername(event.target.value)}
+                        value={email}
+                        onChange={event => setEmail(event.target.value)}
                         />
                 </Grid>
                 <div>
@@ -184,7 +182,7 @@ export function FormAuth() {
                           setEmail(event.target.value);
                           // iremos usar o front end pra cadastrar o username 
                           // com email, pra autenticação com django por email
-                          setUsername(event.target.value);
+                          // setUsername(event.target.value);
                         }}
                         />
                 </Grid>

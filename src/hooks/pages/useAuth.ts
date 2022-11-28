@@ -16,7 +16,7 @@ export function useAuth() {
 
     // CRIANDO AS VARIÁVEIS DE ESTADO
     const [first_name, setName] = useState('');
-    const [username, setUsername] = useState('');
+    // const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confPassword, setConfPassword] = useState('');
@@ -145,8 +145,8 @@ export function useAuth() {
 
 
     return {
-        username,
-        setUsername,
+        // username,
+        // setUsername,
         first_name,
         setName,
         email,
