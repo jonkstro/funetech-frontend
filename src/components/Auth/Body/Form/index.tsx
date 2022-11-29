@@ -34,14 +34,20 @@ export function FormAuth() {
 
   // criando as variáveis de estado
   const [authMode, setAuthMode] = useState('signin');
-  const [type, setType] = useState('password');
+  const [typePas, setTypePas] = useState('password');
+  const [typeConf, setTypeConf] = useState('password');
   
   function changeAuthMode() {
-    setAuthMode(authMode === "signin" ? "signup" : "signin")
+    setAuthMode(authMode === "signin" ? "signup" : "signin");
+    setTypePas('password');
+    setTypeConf('password');
   }
 
   function handleChangeType() {
-    setType(type === 'password' ? 'text' : 'password')
+    setTypePas(typePas === 'password' ? 'text' : 'password');
+  }
+  function handleChangeTypeConf() {
+    setTypeConf(typeConf === 'password' ? 'text' : 'password');
   }
 
   async function handleCreateUser(){
@@ -91,7 +97,7 @@ export function FormAuth() {
                           name="password"
                           id="password"
                           label="Senha"
-                          type={type}
+                          type={typePas}
                           fullWidth
                           variant="standard"
                           placeholder='Senha do Usuário: '
@@ -100,7 +106,7 @@ export function FormAuth() {
                           onChange={event => setPassword(event.target.value)}
                           />
                   </Grid>
-                  {type === 'password'? 
+                  {typePas === 'password'? 
                   <VisibilityIcon onClick={()=> {
                     handleChangeType();
                   }} />
@@ -193,7 +199,7 @@ export function FormAuth() {
                           name="password"
                           id="password"
                           label="Senha"
-                          type={type}
+                          type={typePas}
                           fullWidth
                           variant="standard"
                           placeholder='Senha do Usuário: '
@@ -206,7 +212,7 @@ export function FormAuth() {
                           }}
                           />
                   </Grid>
-                  {type === 'password'? 
+                  {typePas === 'password'? 
                   <VisibilityIcon onClick={()=> {
                     handleChangeType();
                   }} />
@@ -228,7 +234,7 @@ export function FormAuth() {
                           name="confirm_password"
                           id="confirm_password"
                           label="Senha"
-                          type={type}
+                          type={typeConf}
                           fullWidth
                           variant="standard"
                           placeholder='Repita a senha do Usuário: '
@@ -240,12 +246,12 @@ export function FormAuth() {
                           }}
                           />
                   </Grid>
-                  {type === 'password'? 
+                  {typeConf === 'password'? 
                   <VisibilityIcon onClick={()=> {
-                    handleChangeType();
+                    handleChangeTypeConf();
                   }} />
                   :<VisibilityOffIcon onClick={()=> {
-                    handleChangeType();
+                    handleChangeTypeConf();
                   }} />}
                 </div>
     
