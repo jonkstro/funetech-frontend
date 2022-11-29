@@ -116,11 +116,12 @@ export function useAuth() {
                 ...userInput
             }).then(()=>{
                 notifySucces('Cadastrado com sucesso!!');
+                notifySucces('Enviamos um email para ativar sua conta.');
                 console.log('Cadastrado usuário '+ email);
                 limparForm();
             }).catch((error) =>{
                 console.log('Deu erro :'+error.response?.data?.message);
-                notifyErrors('Erro interno no sistema: Tente usar outro email');
+                notifyErrors('Erro interno no sistema');
             })
         } else {
             notifyErrors("Preencha os dados corretamente!!!");
@@ -128,7 +129,7 @@ export function useAuth() {
     }
 
 
-
+    // TODO: CRIAR CHAMADA DE API DE LOGIN E ESQUECER SENHA, 
 
 
 

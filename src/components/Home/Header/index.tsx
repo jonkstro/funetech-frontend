@@ -12,15 +12,15 @@ export function Header() {
                     <Link legacyBehavior href='/'>
                         <a> Home </a>
                     </Link>
-                    <Link legacyBehavior href='/sobre'>
+                    <Link legacyBehavior href='/sobre/'>
                         <a> Sobre </a>
                     </Link>
-                    <Link legacyBehavior href='/contatos'>
+                    <Link legacyBehavior href='/contatos/'>
                         <a> Contatos </a>
                     </Link>
                 </nav>
                 <div>
-                    <Link legacyBehavior href='/auth'>
+                    <Link legacyBehavior href='/auth/'>
                         <button>Entrar / Criar Conta</button>
                     </Link>
                     {/* <Link legacyBehavior href='/auth'>
