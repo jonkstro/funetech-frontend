@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { User } from "../../@types/user";
+import { Login, User } from "../../@types/user";
 
 export function useAuth() {
 
@@ -110,27 +110,67 @@ export function useAuth() {
     }
 
     // FUNÇÃO QUE REALIZARÁ O POST COM O CADASTRO DO USUÁRIO
-    async function cadastrarUser(userInput : User){
+    async function cadastrarUser(userInput : User) {
         if (validarDadosCadastro()) {
-            const response = await api.post('/users/', {
+            await api.post('/auth/users/', {
                 ...userInput
-            }).then(()=>{
+            }).then((response)=>{
                 notifySucces('Cadastrado com sucesso!!');
                 notifySucces('Enviamos um email para ativar sua conta.');
-                console.log('Cadastrado usuário '+ email);
+                console.log('Cadastrado usuário '+ response.data);
                 limparForm();
             }).catch((error) =>{
-                console.log('Deu erro :'+error.response?.data?.message);
-                notifyErrors('Erro interno no sistema');
+                
+                if (error.response.status == 500){
+                    console.log('Error', error.message);
+                    notifyErrors('Email já está sendo usado');
+                } else {
+                    notifyErrors('Erro interno do sistema');
+                }
             })
         } else {
             notifyErrors("Preencha os dados corretamente!!!");
         }
     }
 
+    // FUNÇÃO QUE IRÁ PEGAR O TOKEN DO USUÁRIO
+    async function loginUser(loginInput: Login) {
+        await api.post('/auth/token/login/', {
+            ...loginInput
+        }).then(response => {
+            notifySucces('Logado com sucesso!!!');
+            // ARMAZENAR A TOKEN NO LOCALSTORAGE:
+            localStorage.setItem('token', response.data.auth_token);
+        }).catch(error => {
+            console.log(error)
+            if(error.response.data.non_field_errors[0]){
+                notifyErrors('Email ou Senha incorretos!!');
+            }
+        })
+    }
 
-    // TODO: CRIAR CHAMADA DE API DE LOGIN E ESQUECER SENHA, 
-
+    // FUNÇÃO DE LOGOUT -> USEPLATAFORMA
+    async function logoutUser() {
+        await api.post('/auth/token/logout/', localStorage.getItem('token'),
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                "Authorization": "Token "+localStorage.getItem('token'),
+            },
+        }).then(response=> {
+            notifySucces('Deslogado com sucesso!!!');
+            // REMOVER A TOKEN NO LOCALSTORAGE:
+            localStorage.removeItem('token');
+        }).catch(error => {
+            notifyErrors('Erro interno do sistema');
+            console.log(error);
+            console.log("Token localstorage "+localStorage.getItem('token'));
+            // console.log("Token usestate "+token);
+        })
+    }
+    
+    // TODO: CRIAR CHAMADA DE API DE ESQUECER SENHA, 
+    
 
 
 
@@ -164,5 +204,7 @@ export function useAuth() {
         handleValidation,
         limparForm,
         cadastrarUser,
+        loginUser,
+        logoutUser,
     }
 }

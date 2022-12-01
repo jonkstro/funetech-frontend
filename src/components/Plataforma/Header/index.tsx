@@ -1,44 +1,37 @@
-import Link from "next/link";
+import Image from "next/image";
 import { Container, Content } from "./styles";
 
+import ImgLogo from "../../../assets/images/logo.png";
+import Link from "next/link";
+import { useAuth } from "../../../hooks/pages/useAuth";
+
 export function Header() {
+    const {
+        logoutUser
+    } = useAuth();
+
+    async function handleLogoutUser() {
+        await logoutUser();
+    }
+
     return (
-        // <Container>
-        //     <Content>
-        //         <Link legacyBehavior href='/'>
-        //             <img src='/favicon.png' alt='Logo Funetech' />
-        //         </Link>
-        //         <nav>
-        //             <Link legacyBehavior href='/'>
-        //                 <a> Home </a>
-        //             </Link>
-        //             <Link legacyBehavior href='/sobre'>
-        //                 <a> Sobre </a>
-        //             </Link>
-        //             <Link legacyBehavior href='/contatos'>
-        //                 <a> Contatos </a>
-        //             </Link>
-        //         </nav>
-        //         <div>
-        //             <Link legacyBehavior href='/logout'>
-        //                 <button>Sair</button>
-        //             </Link>
-        //         </div>
-        //     </Content>
-        // </Container>
         <Container>
-        <Content>
-            <Link legacyBehavior href='/'>
-                <img src='/favicon.png' alt='Logo Funetech' />
-            </Link>
-            <div>
-                <h1>FUNETECH</h1>
-                <h3>Recordar é viver!</h3>
-            </div>
-            <Link legacyBehavior href='/logout'>
-                <button>Sair</button>
-            </Link>
-        </Content>
-    </Container>
+            <Content>
+                <Link legacyBehavior href='/'>
+                    <img src='/favicon.png' alt='Logo Funetech' />
+                </Link>
+                <div>
+                    <h1>FUNETECH</h1>
+                    <h3>Recordar é viver!</h3>
+                </div>
+                
+                <button 
+                    style={{width: '5rem'}} 
+                    type="submit"
+                    onClick={()=>handleLogoutUser()}
+                >SAIR</button>
+                
+            </Content>
+        </Container>
     );
 }

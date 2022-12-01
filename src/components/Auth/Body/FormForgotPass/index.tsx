@@ -7,15 +7,12 @@ import { useAuth } from "../../../../hooks/pages/useAuth";
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useRouter } from "next/router";
 
-export function FormAuth() {
+export function FormForgotPass() {
 
   // RECEBENDO AS VARIÁVEIS DO USEAUTH
   const {
-    // username,
-    // setUsername,
-    first_name,
-    setName,
     email,
     setEmail,
     password,
@@ -28,20 +25,16 @@ export function FormAuth() {
     specialValidated,
     lengthValidated,
     handleValidation,
-    limparForm,
-    cadastrarUser,
   } = useAuth();
 
   // criando as variáveis de estado
-  const [authMode, setAuthMode] = useState('signin');
   const [typePas, setTypePas] = useState('password');
   const [typeConf, setTypeConf] = useState('password');
-  
-  function changeAuthMode() {
-    setAuthMode(authMode === "signin" ? "signup" : "signin");
-    setTypePas('password');
-    setTypeConf('password');
-  }
+
+  const router = useRouter()
+  const { pid } = router.query
+
+  console.log("qr: "+pid);
 
   function handleChangeType() {
     setTypePas(typePas === 'password' ? 'text' : 'password');
@@ -50,128 +43,14 @@ export function FormAuth() {
     setTypeConf(typeConf === 'password' ? 'text' : 'password');
   }
 
-  async function handleCreateUser(){
-    await cadastrarUser({
-      // username,
-      first_name,
-      email,
-      password
-    })
-  }
-
-  if (authMode === "signin") {
-    return (
-      <AuthFormContainer>
-        <AuthForm action="" method="POST">
-          <AuthFormContent>
-            <h3 className="Auth-form-title">Logar</h3>
-            <div className="text-center">
-              Não tem uma conta ainda?  {" "}
-              <span className="link-primary" onClick={()=> {
-                changeAuthMode();
-                limparForm();
-                }}>
-                Cadastrar
-              </span>
-            </div>
-            <Grid container spacing={0}>
-                <Grid item xs={12}>      
-                    <TextField
-                        margin="dense"
-                        name="email"
-                        id="email"
-                        label="Email"
-                        type="email"
-                        fullWidth
-                        variant="standard"
-                        placeholder='Email do Usuário: '
-                        // passando valores para o input
-                        value={email}
-                        onChange={event => setEmail(event.target.value)}
-                        />
-                </Grid>
-                <div>
-                  <Grid item xs={12}> 
-                      <TextField
-                          margin="dense"
-                          name="password"
-                          id="password"
-                          label="Senha"
-                          type={typePas}
-                          fullWidth
-                          variant="standard"
-                          placeholder='Senha do Usuário: '
-                          // passando valores para o input
-                          value={password}
-                          onChange={event => setPassword(event.target.value)}
-                          />
-                  </Grid>
-                  {typePas === 'password'? 
-                  <VisibilityIcon onClick={()=> {
-                    handleChangeType();
-                  }} />
-                  :<VisibilityOffIcon onClick={()=> {
-                    handleChangeType();
-                  }} />}
-                </div>
-                <Grid item xs={12}>    
-                  <SubmitButton >
-                    Logar
-                  </SubmitButton>
-                </Grid>
-                
-            </Grid>
-          </AuthFormContent>
-        </AuthForm>
-      </AuthFormContainer>
-    )
-  }
-
   return (
     <AuthFormContainer>
       <AuthForm onSubmit={(e)=> {
         e.preventDefault();
-        handleCreateUser();
-        }}>
+      }}>
       <AuthFormContent>
-          <h3 className="Auth-form-title">Cadastrar</h3>
-          <div className="text-center">
-            Já tem uma conta cadastrada?{" "}
-            <span className="link-primary" onClick={()=> {
-              changeAuthMode();
-              limparForm();
-            }}>
-              Logar
-            </span>
-          </div>
+          <h3 className="Auth-form-title">Alterar senha</h3>
             <Grid container spacing={0}>
-                <Grid item xs={12}>      
-                    <TextField
-                        margin="dense"
-                        name="nome"
-                        id="nome"
-                        label="Nome"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                        placeholder='Nome do Usuário: '
-                        // passando valores para o input
-                        value={first_name}
-                        onChange={event => setName(event.target.value)}
-                        />
-                </Grid>
-                {/* <Grid item xs={12}> 
-                    <TextField
-                        margin="dense"
-                        name="username"
-                        id="username"
-                        label="Username"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                        placeholder='Username do Usuário: '
-                    />
-                </Grid> */}
                 <Grid item xs={12}>      
                     <TextField
                         margin="dense"
@@ -258,15 +137,11 @@ export function FormAuth() {
                 
                 <Grid item xs={12}>    
                   <SubmitButton type="submit">
-                    Cadastrar
+                    Alterar senha
                   </SubmitButton>
                 </Grid>
                 
             </Grid>
-            <br />
-            <p className="text-center mt-2">
-              <a href="forgot">Esqueceu sua senha?</a>
-            </p>
           </AuthFormContent>
       </AuthForm>
     </AuthFormContainer>

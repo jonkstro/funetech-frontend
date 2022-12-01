@@ -1,4 +1,4 @@
-import { FormAuth } from "./Form";
+import { FormAuth } from "./FormAuth";
 import { Container } from "./styles";
 
 export function Body() {

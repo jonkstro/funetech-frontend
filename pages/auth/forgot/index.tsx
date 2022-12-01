@@ -1,17 +1,17 @@
 import Head from "next/head";
 import React from "react";
-import { Header } from "../../src/components/Plataforma/Header";
-import { Body } from "../../src/components/Plataforma/Body";
-import { Footer } from "../../src/components/Plataforma/Footer";
+import { Header } from "../../../src/components/Auth/Header";
+import { Footer } from "../../../src/components/Auth/Footer";
+import { ForgotPass } from "../../../src/components/Auth/Body/ForgotPass";
 export default function Home() {
     return (
         <>
             <Head>
-                <title>FUNETECH - Página Inicial</title>
+                <title>FUNETECH - Alterar Senha</title>
                 <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
             </Head>
             <Header />
-            <Body />
+            <ForgotPass/>
             <Footer />
         </>
     );
