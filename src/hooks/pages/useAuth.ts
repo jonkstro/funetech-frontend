@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Login, User } from "../../@types/user";
+import { Forgot, Login, User } from "../../@types/user";
 
 export function useAuth() {
 
@@ -169,8 +169,23 @@ export function useAuth() {
         })
     }
     
-    // TODO: CRIAR CHAMADA DE API DE ESQUECER SENHA, 
     
+    // FUNÇÃO DE ENVIAR EMAIL COM LINK PARA MUDAR SENHA
+    async function forgotPassword(emailInput: Forgot) {
+        if (email.length > 6) {
+
+            await api.post('/auth/users/reset_password/', {
+                ...emailInput
+            }).then(responst => {
+                notifySucces('Enviamos um email com o link de alteração de senha');
+            }).catch(error => {
+                console.log(error);
+                notifyErrors('Erro interno do sistema');
+            })
+        } else {
+            notifyErrors('Preencha seus dados corretamente')
+        }
+    }
 
 
 
@@ -206,5 +221,6 @@ export function useAuth() {
         cadastrarUser,
         loginUser,
         logoutUser,
+        forgotPassword,
     }
 }
