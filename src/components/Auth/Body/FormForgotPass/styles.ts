@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+    background-color: rgba(255,255,255, 0.8);
+    height: 85vh;
+    margin: auto;
+    padding-top: 0.5rem;
+
+    @media (max-width: 600px) {
+        height: 85vh;
+    }
+
+`;
+
 export const AuthFormContainer = styled.div`
     display: flex;
     justify-content: center;

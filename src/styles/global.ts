@@ -35,7 +35,7 @@ export const GlobalStyle = createGlobalStyle`
         }
 
         /* Adicionar imagem de fundo */
-        background-image: url('background.jpg');
+        background-image: url('/background.jpg');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
