@@ -7,6 +7,7 @@ import { useAuth } from "../../../../hooks/pages/useAuth";
 
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useRouter } from "next/router";
 
 export function FormAuth() {
 
@@ -66,6 +67,7 @@ export function FormAuth() {
       password
     })
   }
+
 
   if (authMode === "signin") {
     return (

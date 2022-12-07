@@ -3,9 +3,12 @@ import { api } from "../../services/api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ActivateUser, Forgot, Login, ResetPassword, User } from "../../@types/user";
+import { useRouter } from "next/router";
 
 export function useAuth() {
 
+    const router = useRouter();
+    
     // QUANDO CARREGAR A PÁGINA, IRÁ RODAR O USEEFFECT
     useEffect(()=> {
         setName('');
@@ -119,6 +122,7 @@ export function useAuth() {
                 notifySucces('Enviamos um email para ativar sua conta.');
                 console.log('Cadastrado usuário '+ response.data);
                 limparForm();
+                router.push('/auth');
             }).catch((error) =>{
                 
                 if (error.response.status == 500){
@@ -139,6 +143,7 @@ export function useAuth() {
             ...activateInput
         }).then(response => {
             notifySucces('Ativado com sucesso!!');
+            router.push('/auth');
         }).catch(error => {
             console.log(error)
         })
@@ -149,9 +154,10 @@ export function useAuth() {
         await api.post('/auth/token/login/', {
             ...loginInput
         }).then(response => {
-            notifySucces('Logado com sucesso!!!');
+            // notifySucces('Logado com sucesso!!!');
             // ARMAZENAR A TOKEN NO LOCALSTORAGE:
             localStorage.setItem('token', response.data.auth_token);
+            router.push('/plataforma');
         }).catch(error => {
             console.log(error)
             if(error.response.data.non_field_errors[0]){
@@ -169,9 +175,10 @@ export function useAuth() {
                 "Authorization": "Token "+localStorage.getItem('token'),
             },
         }).then(response=> {
-            notifySucces('Deslogado com sucesso!!!');
+            // notifySucces('Deslogado com sucesso!!!');
             // REMOVER A TOKEN NO LOCALSTORAGE:
             localStorage.removeItem('token');
+            router.push('/auth');
         }).catch(error => {
             notifyErrors('Erro interno do sistema');
             console.log(error);
@@ -201,25 +208,27 @@ export function useAuth() {
 
     // CRIAR FUNÇÃO QUE IRÁ ENVIAR A SENHA NOVA POST E ATUALIZAR A MESMA
     async function resetPassword(resetInput: ResetPassword) {
-        await api.post('http://127.0.0.1:8000/auth/users/reset_password_confirm/', {
-            ...resetInput
-        }).then(response => {
-            notifySucces('Alterado a senha com sucesso');
-        }).catch(error => {
-            console.log(error);
-            notifyErrors('Erro interno do sistema');
-        })
+        if (
+            lowerValidated == true &&
+            upperValidated == true &&
+            numberValidated == true &&
+            specialValidated == true &&
+            lengthValidated == true &&
+            password == confPassword
+        ){
+            await api.post('http://127.0.0.1:8000/auth/users/reset_password_confirm/', {
+                ...resetInput
+            }).then(response => {
+                notifySucces('Alterado a senha com sucesso');
+                router.push('/auth');
+            }).catch(error => {
+                console.log(error);
+                notifyErrors('Erro interno do sistema');
+            })
+        } else {
+            notifyErrors('Preencha seus dados corretamente')
+        }
     }
-
-
-
-    // TODO: 
-
-
-
-
-
-
 
     return {
         // username,

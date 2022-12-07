@@ -4,8 +4,10 @@ import { Container, Content } from "./styles";
 import ImgLogo from "../../../assets/images/logo.png";
 import Link from "next/link";
 import { useAuth } from "../../../hooks/pages/useAuth";
+import { useRouter } from "next/router";
 
 export function Header() {
+    
     const {
         logoutUser
     } = useAuth();
@@ -28,7 +30,9 @@ export function Header() {
                 <button 
                     style={{width: '5rem'}} 
                     type="submit"
-                    onClick={()=>handleLogoutUser()}
+                    onClick={()=>{
+                        handleLogoutUser();
+                    }}
                 >SAIR</button>
                 
             </Content>
