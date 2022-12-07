@@ -73,9 +73,9 @@ Este é um projeto de  Front-end, desenvolvido em Typescript com o framework Nex
 
 ## 💡Concepção do Projeto
 
-- **Wireframe do Projeto: https://www.notion.so/Next-Js-Funetech-c1097d063ae543b3a36af8f1fa0be9a7** ~~COLOCAR AQUI O WIREFRAME "ESBOÇO" DO PROJETO~~
-- **Link do Figma: https://www.figma.com/file/7UhMApv7rTXwasQcN0iNff/Funetech?t=Pgb9s4zixT5SKHM4-0** ~~COLOCAR AQUI O LINK DO FIGMA | LINK DO ADOBE XD | LINK DO WIREFRAME (FRONT-END)~~
-- **Modelagem do Banco de Dados : https://drawsql.app/teams/teste-35/diagrams/funetech** ~~COLOCAR AQUI OS DIAGRAMAS DE MODELAGEM DO BANCO DE DADOS E EXPLICAR UM POUCO SOBRE~~ . 
+- **Wireframe do Projeto: https://www.notion.so/Next-Js-Funetech-c1097d063ae543b3a36af8f1fa0be9a7** 
+- **Link do Figma: https://www.figma.com/file/7UhMApv7rTXwasQcN0iNff/Funetech?t=Pgb9s4zixT5SKHM4-0** 
+- **Modelagem do Banco de Dados : https://drawsql.app/teams/teste-35/diagrams/funetech** 
 <!-- 
 EXEMPLO: 
 
@@ -94,14 +94,12 @@ Para esse projeto são modelados três entidades : **Estudante (STUDENT), Profes
 
 ## 🔗Link para Acessar
 
-- **Link do Projeto: https://funetech.vercel.app/** ~~COLOCAR AQUI O LINK DO SURGE~~
-
+- **Link do Projeto: https://funetech.vercel.app/** 
 ---
 
 
 ## 🛰Rodando o Projeto
 
-~~EXPLICAR AQUI O PASSO A PASSO PARA CONSEGUIR RODAR E ACESSAR O PROJETO.~~
 
 Para Rodar o projeto, siga as seguintes etapas :
 
