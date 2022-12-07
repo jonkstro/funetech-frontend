@@ -19,3 +19,8 @@ export interface ResetPassword {
     token: string;
     new_password: string;
 }
+
+export interface ActivateUser {
+    uid: string;
+    token: string;
+}

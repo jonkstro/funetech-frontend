@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Forgot, Login, ResetPassword, User } from "../../@types/user";
+import { ActivateUser, Forgot, Login, ResetPassword, User } from "../../@types/user";
 
 export function useAuth() {
 
@@ -133,6 +133,17 @@ export function useAuth() {
         }
     }
 
+    // FUNÇÃO QUE IRÁ ATIVAR A CONTA DO USUÁRIO
+    async function activateUser(activateInput: ActivateUser) {
+        await api.post('/auth/users/activation/', {
+            ...activateInput
+        }).then(response => {
+            notifySucces('Ativado com sucesso!!');
+        }).catch(error => {
+            console.log(error)
+        })
+    }
+
     // FUNÇÃO QUE IRÁ PEGAR O TOKEN DO USUÁRIO
     async function loginUser(loginInput: Login) {
         await api.post('/auth/token/login/', {
@@ -232,6 +243,7 @@ export function useAuth() {
         loginUser,
         logoutUser,
         forgotPassword,
-        resetPassword
+        resetPassword,
+        activateUser
     }
 }
