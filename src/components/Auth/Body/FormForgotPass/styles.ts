@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const Container = styled.div`
     background-color: rgba(255,255,255, 0.8);
     height: 85vh;
-    margin: auto;
-    padding-top: 0.5rem;
+    margin: 0 auto;
+    padding-top: 1.5rem;
 
     @media (max-width: 600px) {
         height: 85vh;
@@ -16,7 +16,7 @@ export const AuthFormContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    padding-top: 3rem;
     width: 100%;
     border-radius: 0.25rem;
     

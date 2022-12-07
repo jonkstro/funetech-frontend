@@ -9,12 +9,15 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useRouter } from "next/router";
 
-export function FormForgotPass() {
+interface ForgetProps {
+  uid: string,
+  token: string
+}
+
+export function FormForgotPass( props: ForgetProps ) {
 
   // RECEBENDO AS VARIÁVEIS DO USEAUTH
   const {
-    email,
-    setEmail,
     password,
     setPassword,
     confPassword,
@@ -25,16 +28,17 @@ export function FormForgotPass() {
     specialValidated,
     lengthValidated,
     handleValidation,
+    resetPassword
   } = useAuth();
 
   // criando as variáveis de estado
   const [typePas, setTypePas] = useState('password');
   const [typeConf, setTypeConf] = useState('password');
-
-  const router = useRouter()
-  const { pid } = router.query
-
-  console.log("qr: "+pid);
+  
+  // CRIANDO VARIÁVEIS QUE VIRÃO DO PAGE PARA O FORM
+  const uid = String(props.uid);
+  const token = String(props.token);
+  const new_password = password;
 
   function handleChangeType() {
     setTypePas(typePas === 'password' ? 'text' : 'password');
@@ -43,35 +47,25 @@ export function FormForgotPass() {
     setTypeConf(typeConf === 'password' ? 'text' : 'password');
   }
 
+  // CRIAR A FUNÇÃO QUE ENVIARÁ OS DADOS PARA O USEAUTH QUE IRÁ CHAMAR A API:
+  async function handleResetPassword() {
+    await resetPassword({
+      uid,
+      token,
+      new_password
+    })
+  }
+
   return (
     <Container>
       <AuthFormContainer>
         <AuthForm onSubmit={(e)=> {
           e.preventDefault();
+          handleResetPassword();
         }}>
         <AuthFormContent>
             <h3 className="Auth-form-title">Alterar senha</h3>
               <Grid container spacing={0}>
-                  <Grid item xs={12}>      
-                      <TextField
-                          margin="dense"
-                          name="email"
-                          id="email"
-                          label="Email"
-                          type="email"
-                          fullWidth
-                          variant="standard"
-                          placeholder='Email do Usuário: '
-                          // passando valores para o input
-                          value={email}
-                          onChange={event => {
-                            setEmail(event.target.value);
-                            // iremos usar o front end pra cadastrar o username 
-                            // com email, pra autenticação com django por email
-                            // setUsername(event.target.value);
-                          }}
-                          />
-                  </Grid>
                   <div>
                     <Grid item xs={12}> 
                         <TextField

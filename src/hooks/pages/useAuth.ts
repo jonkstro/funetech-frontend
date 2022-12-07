@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Forgot, Login, User } from "../../@types/user";
+import { Forgot, Login, ResetPassword, User } from "../../@types/user";
 
 export function useAuth() {
 
@@ -176,7 +176,7 @@ export function useAuth() {
 
             await api.post('/auth/users/reset_password/', {
                 ...emailInput
-            }).then(responst => {
+            }).then(response => {
                 notifySucces('Enviamos um email com o link de alteração de senha');
             }).catch(error => {
                 console.log(error);
@@ -188,11 +188,21 @@ export function useAuth() {
     }
 
 
+    // CRIAR FUNÇÃO QUE IRÁ ENVIAR A SENHA NOVA POST E ATUALIZAR A MESMA
+    async function resetPassword(resetInput: ResetPassword) {
+        await api.post('http://127.0.0.1:8000/auth/users/reset_password_confirm/', {
+            ...resetInput
+        }).then(response => {
+            notifySucces('Alterado a senha com sucesso');
+        }).catch(error => {
+            console.log(error);
+            notifyErrors('Erro interno do sistema');
+        })
+    }
 
 
 
-
-
+    // TODO: 
 
 
 
@@ -222,5 +232,6 @@ export function useAuth() {
         loginUser,
         logoutUser,
         forgotPassword,
+        resetPassword
     }
 }
