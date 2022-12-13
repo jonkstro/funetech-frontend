@@ -40,7 +40,7 @@ export default function Home() {
           // <Homenagem homenagens={listaHomenagens} />
         )
       } */}
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
