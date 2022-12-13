@@ -1,31 +1,13 @@
 import styled from "styled-components";
 
-export const Fundo = styled.main`
-  width: 100%;
-  height: 85vh;
-  background-color: rgba(255, 255, 255, 0.8);
-`;
-
 export const Container = styled.div`
-  padding-top: 10rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 85vh;
   margin: 0 auto;
-  height: 50vh;
-  width: 100%;
-  @media (max-width: 800px) {
-    height: 60vh;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 1rem;
-    padding-top: 5rem;
-    @media (min-height: 800px) {
-      height: 85vh;
-      grid-template-columns: repeat(1, 1fr);
-      gap: 1rem;
-      padding-top: 5rem;
-    }
+  padding-top: 1.5rem;
+  text-align: center;
+  @media (max-width: 600px) {
+    height: 85vh;
   }
 `;
 
@@ -53,5 +35,17 @@ export const Content = styled.div`
     filter: brightness(0.8);
     transform: scale(1.1);
     box-shadow: rgb(100 100 111 / 50%) 0px 5px 5px 0px;
+  }
+`;
+
+export const Lista = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1160px;
+  text-align: center;
+  margin: 5rem auto;
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(1, 1fr);
   }
 `;

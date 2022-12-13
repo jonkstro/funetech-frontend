@@ -1,17 +1,15 @@
-import Image from "next/image";
 import { Container, Content } from "./styles";
 
-import ImgLogo from "../../../assets/images/logo.png";
 import Link from "next/link";
-import { useAuth } from "../../../hooks/pages/useAuth";
 import { useRouter } from "next/router";
 
-export function Header() {
-  const { logoutUser } = useAuth();
+export interface HeaderProps {
+  href: string;
+  texto: string;
+}
 
-  async function handleLogoutUser() {
-    await logoutUser();
-  }
+export function HeaderPlataforma(props: HeaderProps) {
+  const router = useRouter();
 
   return (
     <Container>
@@ -28,10 +26,10 @@ export function Header() {
           style={{ width: "5rem" }}
           type="submit"
           onClick={() => {
-            handleLogoutUser();
+            router.push(props.href);
           }}
         >
-          SAIR
+          {props.texto}
         </button>
       </Content>
     </Container>
