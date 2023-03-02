@@ -1,7 +1,7 @@
 import Image from "next/dist/client/image";
 import { useRouter } from "next/router";
 import { ListaHomenagem } from "../../../@types/homenagem";
-import { Container, Content, DivIcons, DivImage } from "./styles";
+import { Container, Content, DivIcons } from "./styles";
 
 import ImgNasc from "../../../assets/images/data-de-nascimento.svg";
 import ImgFalec from "../../../assets/images/funeral.svg";
