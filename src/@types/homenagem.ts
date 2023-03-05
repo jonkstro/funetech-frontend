@@ -6,7 +6,7 @@ export interface Homenagem {
   cidade_falec: string;
   memoria: string;
   biografia: string;
-  foto: File | null | undefined;
+  foto: File | string | undefined | null;
   user: number;
 }
 
@@ -19,7 +19,7 @@ export interface ListaHomenagem {
   cidade_falec: string;
   memoria: string;
   biografia: string;
-  foto: null | undefined | string;
+  foto: string;
   user: number;
 }
 

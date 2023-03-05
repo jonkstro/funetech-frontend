@@ -8,12 +8,13 @@ import { useRouter } from "next/router";
 import { HeaderPlataforma } from "../../../src/components/Plataforma/HeaderPlataforma";
 import { Footer } from "../../../src/components/Plataforma/Footer";
 import { usePlataforma } from "../../../src/hooks/pages/usePlataforma";
-import { Homenagem } from "../../../src/components/Homenagem/Body";
+import { ShowHomenagem } from "../../../src/components/Homenagem/Body";
+import { Homenagem } from "../../../src/@types/homenagem";
 
 export default function Home() {
   const router = useRouter();
   const { id } = router.query;
-  const { getHomenagemData, listaHomenagens, listarHomenagens } = usePlataforma();
+  const { getHomenagemData, homenagem } = usePlataforma();
   useEffect(() => {
     if (!router.isReady) return;
     getHomenagemData(Number(id));
@@ -31,7 +32,7 @@ export default function Home() {
       {/* {console.log('lista')}
       {console.log(listaHomenagens)} */}
       {/* <h1>HOMENAGEM DE ID {id}</h1> */}
-      {router.isReady? <Homenagem homenagens={listaHomenagens} /> : <div>Loading...</div>}
+      {router.isReady? <ShowHomenagem homenagem={homenagem}/> : <div>Loading...</div>}
       {/* {
         router.isReady ? (
           <h1>Loading..</h1>

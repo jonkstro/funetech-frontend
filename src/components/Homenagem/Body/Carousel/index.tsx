@@ -9,9 +9,9 @@ import Image from "next/image";
 import { CarouselStyle, Container, DivImage } from "./styles";
 
 interface CarouselProps {
-  foto: string;
-  memoria: string;
-  biografia: string;
+  foto: string | File | null | undefined;
+  memoria: string | null | undefined;
+  biografia: string | null | undefined;
 }
 
 function CarouselPlataforma(props: CarouselProps) {
@@ -27,10 +27,10 @@ function CarouselPlataforma(props: CarouselProps) {
           <div>
             <DivImage>
               <Image
-                src={props.foto}
                 height={350}
                 width={200}
-                alt={"foto de homenagem"}
+                alt={"foto de homenagem"} 
+                src={props.foto}              
               />
               {/* <p className="legend">Legend 1</p> */}
             </DivImage>

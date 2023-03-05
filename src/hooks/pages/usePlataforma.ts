@@ -29,8 +29,10 @@ export function usePlataforma() {
   const [cidadeFalec, setCidadeFalec] = useState("");
   const [memoria, setMemoria] = useState("");
   const [biografia, setBiografia] = useState("");
-  const [foto, setFoto] = useState<File | null>();
+  const [foto, setFoto] = useState<File | string | null>();
   const [listaHomenagens, setListaHomenagens] = useState<ListaHomenagem[]>([]);
+  const [homenagem, setHomenagem] = useState<Homenagem>()
+
   // CRIAR FUNÇÃO DE VALIDAÇÃO DOS DADOS DO CADASTRO
   function validarDadosCadastro() {
     if (
@@ -114,7 +116,7 @@ export function usePlataforma() {
         router.push("/auth");
       });
   }
-  // CRIAR FUNÇÃO QUE IRÁ LISTAR AS HOMENAGENS DO USUÁRIO
+  // CRIAR FUNÇÃO QUE IRÁ MOSTRAR OS DADOS NO CAROUSEL
   async function getHomenagemData(id: number) {
     await api
       .get("/homenagens/" + id, {
@@ -123,7 +125,7 @@ export function usePlataforma() {
         },
       })
       .then((response) => {
-        setListaHomenagens(response.data);
+        setHomenagem(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -153,5 +155,6 @@ export function usePlataforma() {
     listarHomenagens,
     listaHomenagens,
     getHomenagemData,
+    homenagem
   };
 }
