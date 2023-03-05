@@ -30,7 +30,7 @@ export const ShowHomenagem = (props: Props) => {
             <Image width={20} height={20} src={ImgFalec} alt={""} />
               <h3>
                 {props.homenagem?.cidade_falec},
-                {new Date(props.homenagem!.data_falec).toLocaleDateString()}
+                {/* {new Date(props.homenagem!.data_falec).toLocaleDateString()} */}
               </h3>
           </DivIcons>
             <CarouselPlataforma
