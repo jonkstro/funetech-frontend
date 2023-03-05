@@ -30,7 +30,7 @@ function CarouselPlataforma(props: CarouselProps) {
                 height={350}
                 width={200}
                 alt={"foto de homenagem"} 
-                src={props.foto}              
+                src={props.foto as string}              
               />
               {/* <p className="legend">Legend 1</p> */}
             </DivImage>
