@@ -23,7 +23,7 @@ export const ShowHomenagem = (props: Props) => {
             <Image width={20} height={20} src={ImgNasc} alt={""} />
               <h3>
                 {props.homenagem?.cidade_nasc},
-                {new Date(props.homenagem!.data_nasc).toLocaleDateString()}{" "}
+                {/* {new Date(props.homenagem!.data_nasc).toLocaleDateString()}{" "} */}
               </h3>
           </DivIcons>
           <DivIcons>
