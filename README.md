@@ -10,7 +10,7 @@
 
 ## 🕵Sobre
 
-Escrever de forma sucinta sobre o que é o seu projeto. Por exemplo, se você está fazendo uma Pokedéx pode escrever : Aplicação com intuito de criar uma pokedéx, site onde você pode ver os detalhes dos pokemóns e montar a sua equipe.
+Projeto desenvolvido com o propósito de homenagear entes queridos falecidos. Através dele, os familiares poderão relembrar seus entes queridos em tempo real e online.
 
 ---
 
@@ -19,7 +19,7 @@ Escrever de forma sucinta sobre o que é o seu projeto. Por exemplo, se você es
 <!-- - Alves
 - Arthur -->
 
-- Jonas
+- Jonas Castro
 
 ---
 
@@ -44,9 +44,9 @@ Escrever de forma sucinta sobre o que é o seu projeto. Por exemplo, se você es
 
 <!-- ~~COLOCAR AQUI O STATUS DO PROJETO. ALÉM DISSO, VOCÊ PODE COLOCAR QUAL PARTE VOCÊ ESTÁ DESENVOLVENDO (ESTILIZAÇÃO, RESPONSIVIDADE, ETC...)~~ -->
 
-- ⏳ Fazendo
-- 📥 Testando
-- ⌛ Feito
+-[x] ⏳ Fazendo
+-[x] 📥 Testando
+-[ ] ⌛ Feito
 
 ---
 
@@ -112,4 +112,4 @@ Para Rodar o projeto, siga as seguintes etapas :
 
 ## 📝Sobre a Licença
 
-Este projeto esta sobe a licença [MIT](./LICENSE).
+<!-- Este projeto esta sobe a licença [MIT](./LICENSE). -->
