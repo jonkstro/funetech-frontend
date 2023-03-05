@@ -13,7 +13,7 @@ import { Homenagem } from "../../../src/components/Homenagem/Body";
 export default function Home() {
   const router = useRouter();
   const { id } = router.query;
-  const { getHomenagemData, listaHomenagens } = usePlataforma();
+  const { getHomenagemData, listaHomenagens, listarHomenagens } = usePlataforma();
   useEffect(() => {
     if (!router.isReady) return;
     getHomenagemData(Number(id));

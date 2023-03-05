@@ -6,42 +6,50 @@ import { Container, Content, DivIcons } from "./styles";
 import ImgNasc from "../../../assets/images/data-de-nascimento.svg";
 import ImgFalec from "../../../assets/images/funeral.svg";
 import CarouselPlataforma from "./Carousel";
+
 interface ListaProps {
   homenagens: ListaHomenagem[];
 }
+
 export const Homenagem = (props: ListaProps) => {
   return (
+    <>
     <Container>
       <Content>
-        <h1>{props.homenagens.nome}</h1>
+        {props.homenagens.map((homenagem) => (
+          <h1>{homenagem.nome}</h1>
+        ))}
         <div>
-          {/* <p>{props.homenagens.id}</p>
-          <p>{props.homenagens.nome}</p>
-          <p>{props.homenagens.biografia}</p>
-          <p>{props.homenagens.memoria}</p> */}
 
           {/* REALIZAR A FORMATAÇÃO DO TIPO DE DATA DO BRASIL */}
           <DivIcons>
             <Image width={20} height={20} src={ImgNasc} alt={""} />
-            <h3>
-              {props.homenagens.cidade_nasc},
-              {new Date(props.homenagens.data_nasc).toLocaleDateString()}{" "}
-            </h3>
+            {props.homenagens.map((homenagem) => (
+              <h3>
+                {homenagem.cidade_nasc},
+                {new Date(homenagem.data_nasc).toLocaleDateString()}{" "}
+              </h3>
+            ))}
           </DivIcons>
           <DivIcons>
             <Image width={20} height={20} src={ImgFalec} alt={""} />
-            <h3>
-              {props.homenagens.cidade_falec},
-              {new Date(props.homenagens.data_falec).toLocaleDateString()}
-            </h3>
+            {props.homenagens.map((homenagem) => (
+              <h3>
+                {homenagem.cidade_falec},
+                {new Date(homenagem.data_falec).toLocaleDateString()}
+              </h3>
+            ))}
           </DivIcons>
-          <CarouselPlataforma
-            foto={props.homenagens.foto}
-            memoria={props.homenagens.memoria}
-            biografia={props.homenagens.biografia}
-          />
+          {props.homenagens.map((homenagem) => (
+            <CarouselPlataforma
+              foto={homenagem.foto!}
+              memoria={homenagem.memoria}
+              biografia={homenagem.biografia}
+            />
+          ))}
         </div>
       </Content>
     </Container>
+  </>
   );
 };

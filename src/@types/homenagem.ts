@@ -19,7 +19,7 @@ export interface ListaHomenagem {
   cidade_falec: string;
   memoria: string;
   biografia: string;
-  foto: File | null | undefined;
+  foto: null | undefined | string;
   user: number;
 }
 
