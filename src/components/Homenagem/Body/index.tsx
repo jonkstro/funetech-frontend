@@ -37,7 +37,7 @@ export const ShowHomenagem = (props: Props) => {
               // foto={props.homenagem!.foto}
               memoria={props.homenagem?.memoria}
               biografia={props.homenagem?.biografia}
-              foto={props.homenagem?.foto}
+              foto={props.homenagem?.foto!}
             />
         </div>
       </Content>
