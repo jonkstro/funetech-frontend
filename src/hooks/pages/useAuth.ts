@@ -131,11 +131,12 @@ export function useAuth() {
           router.push("/auth");
         })
         .catch((error) => {
-          if (error.response.status == 500) {
-            console.log("Error", error.message);
+          if (error.response?.status == 500) {
+            console.log("Error", error);
             notifyErrors("Email já está sendo usado");
           } else {
             notifyErrors("Erro interno do sistema");
+            console.log(error);
           }
         });
     } else {
